@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Declares this file as an HTML5 document -->
+
+<html>
+<head>
+    <title>Prediction Page</title>
+    <!-- Title shown in the browser tab -->
+</head>
+
+<body>
+    <h2>Simple Prediction App</h2>
+    <!-- Page heading shown to the user -->
+
+    <form method="POST">
+        <!-- HTML form that sends data to the Flask server -->
+        <!-- method="POST" means user input will be sent in the request body -->
+
+        <input 
+            type="number"
+            step="any"
+            name="x"
+            placeholder="Enter a number"
+            required
+        >
+        <!-- Input field where the user types a number -->
+        <!-- name="x" must match request.form["x"] in Flask -->
+        <!-- step="any" allows decimals -->
+        <!-- required prevents empty submission -->
+
+        <button type="submit">Predict</button>
+        <!-- Button that submits the form -->
+    </form>
+
+    {% if result is not none %}
+    <!-- Jinja template condition -->
+    <!-- Jinja is a templating engine that lets Flask generate dynamic HTML by combining HTML with Python data and logic. -->
+    <!-- This block runs only if Flask sends a value for 'result' -->
+
+        <h3>Prediction Result:</h3>
+        <!-- Label for the output -->
+
+        <p>{{ result }}</p>
+        <!-- Displays the prediction result sent from Flask -->
+        <!-- {{ result }} is replaced with the actual value -->
+    {% endif %}
+
+</body>
+</html>
